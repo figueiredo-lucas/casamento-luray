@@ -1,17 +1,16 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { initializeApp } from 'firebase/app'
+import { getDatabase } from 'firebase/database'
+import config from './config'
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDBZ3TbdOCJWJeSwBlWnCeMmopGPFFE8Hk",
-  authDomain: "luray-casamento.firebaseapp.com",
-  projectId: "luray-casamento",
-  storageBucket: "luray-casamento.firebasestorage.app",
-  messagingSenderId: "962768776841",
-  appId: "1:962768776841:web:b8c7488a4beb1302fc2058"
-};
+    apiKey: config.firebase.apiKey,
+    authDomain: config.firebase.authDomain,
+    databaseURL: config.firebase.databaseURL,
+    projectId: config.firebase.projectId,
+    storageBucket: config.firebase.storageBucket,
+    messagingSenderId: config.firebase.messagingSenderId,
+    appId: config.firebase.appId,
+}
 
-// Initialize Firebase
-export const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig)
+export const db = getDatabase(app)
