@@ -2,6 +2,8 @@ import { useState } from 'react';
 import './App.css'
 import Header from './Header'
 import SideBySideText from './SideBySideText'
+import Rsvp from './Rsvp';
+import { FaBackward, FaChevronLeft, FaHeart } from 'react-icons/fa';
 
 const STAGES = {
     LANDING: 'LANDING',
@@ -16,45 +18,60 @@ function App() {
 
     return (
         <>
-            <Header onClick={() => setCurrStage(STAGES.LANDING)} />
-            <div className="max-w-[64rem] mx-auto px-4 py-8 gap-12 flex flex-col">
-                <div className={`flex flex-col gap-4 ${STAGES.LANDING !== currStage ? 'mb-12' : 'mb-0'}`}>
+            <div className="max-w-[64rem] mx-auto md:gap-8 gap-6 flex flex-col">
+                <Header onClick={() => setCurrStage(STAGES.LANDING)} />
+                <div className="flex flex-col mb-4">
                     <div className="foto-capa"></div>
                     {/* <SideBySideText
-                        size={14}
-                        left={['Maria das Graças', 'José Arimatéia']}
-                        right={['Maria Aparecida', 'Leonardo']} /> */}
-
-                    {STAGES.LANDING === currStage && (
-                        <div className="border-b pb-8">
-                            <SideBySideText left={['29 de agosto de 2026', '16h30']} right={['Mansão Atrium', 'Park Way, Brasília']} />
-                        </div>
-                    )}
+                        left={['Maria das Graças Morais', 'José Arimatéia de Araújo']}
+                        right={['Maria Aparecida Rocha', 'Leonardo Figueiredo']} /> */}
                 </div>
 
-                {STAGES.RSVP === currStage && (
-                    <div className="flex flex-col gap-6 items-center">
-                        <span className="text-center uppercase font-bold tracking-[0.4px] text-[40px] leading-[42px]">
-                            Qual o código está no convite?
-                        </span>
-                        <div className="flex flex-col gap-2 w-full">
-                            <span className="text-slate-500">Você pode informar o código que recebeu.</span>
 
-                            <input
-                                type="text" placeholder="Identificação do convite" className="input" />
+                {STAGES.LANDING === currStage && (
+                    <>
+                        <div className="md:text-[40px] text-xl md:leading-[50px] font-bold tracking-[0.4px] text-center">
+                            Estamos animados para te convidar para a nossa cerimônia no jardim, seguida de um jantar. Nos vemos lá!
                         </div>
-                        <button className="button">Continuar</button>
+                        <div className="border-t md:pt-8 pt-6">
+                            <SideBySideText left={['29 de agosto de 2026', '16h30']} right={['Mansão Atrium', 'Park Way, Brasília']} />
+                        </div>
+                    </>
+                )}
+
+                {STAGES.RSVP === currStage && (
+                    <div className="text-left relative">
+                        <div className="cursor-pointer flex items-center gap-2 md:absolute pb-2 top-2" onClick={() => setCurrStage(STAGES.LANDING)}><FaChevronLeft /> Voltar</div>
+                        <Rsvp />
                     </div>
                 )}
 
                 {STAGES.LANDING === currStage && (
-                    <div className="flex gap-[60px] justify-center">
-                        <button className="button w-[340px]"
-                            onClick={() => setCurrStage(STAGES.RSVP)}>CONFIRMAR PRESENÇA</button>
-                        <a className="button w-[340px]"
-                            target="_blank" href="https://calendar.google.com/calendar/r/eventedit?dates=20260829T163000/20260829T230000&location=Mansão%20Atrium%2C%20Park%20Way%2C%20Brasília&text=Casamento%20Rayssa%20%26%20Lucas">ADICIONAR A AGENDA</a>
-                        <button className="button w-[340px]">LISTA DE PRESENTES</button>
-                    </div>
+                    <>
+                        <div className="flex justify-between w-full md:flex-row flex-col gap-3 md:gap-8">
+                            <button className="button flex-1"
+                                onClick={() => setCurrStage(STAGES.RSVP)}>CONFIRMAR PRESENÇA</button>
+                            <a className="button flex-1"
+                                target="_blank" href="https://calendar.google.com/calendar/r/eventedit?dates=20260829T163000/20260829T230000&location=Mansão%20Atrium%2C%20Park%20Way%2C%20Brasília&text=Casamento%20Rayssa%20%26%20Lucas">ADICIONAR A AGENDA</a>
+                            <button className="button flex-1">LISTA DE PRESENTES</button>
+                        </div>
+                        <div className="mood-festa flex flex-col items-center justify-center text-white text-center px-4">
+                            <span className="md:text-xl uppercase">Mood da Festa</span>
+                            <span className="uppercase font-bold tracking-[0.4px] md:text-4xl text-2xl">Garden party</span>
+                            <span className="md:text-lg text-sm md:mt-8 mt-6">Para entrar na vibe do nosso casamento, preparamos também algumas dicas úteis.</span>
+                        </div>
+                        <div className="flex space-around md:gap-8 gap-6 md:flex-row flex-col">
+                            <div className="garden flex-1"></div>
+                            <div className="cartao">
+                                <div className="extra extra-1"></div>
+                                    <button className="button small">Manual do Convidado</button>
+                            </div>
+                            <div className="cartao">
+                                <div className="extra extra-2"></div>
+                                <button className="button small">Informações extras</button>
+                            </div>
+                        </div>
+                    </>
                 )}
 
 

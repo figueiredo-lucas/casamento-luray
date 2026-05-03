@@ -111,7 +111,7 @@
 
 
 #root {
-    max-width: 100% !important;
+    @apply md:!p-8 !p-6;
 }
 
 body {
@@ -125,19 +125,17 @@ body {
     width: 100%;
     height: 40vh;
     background-image: url('danca.png');
-    background-size: 100%;
+    background-size: auto 80vh;
     background-position: center;
     background-color: #580202;
     background-repeat: no-repeat;
     position: relative;
 
     &::after {
+        @apply w-[6px] md:h-[60px] h-[40px] md:bottom-[-30px] bottom-[-20px];
         content: "";
-        width: 6px;
-        height: 60px;
         background: #7a4787;
         position: absolute;
-        bottom: -30px;
         left: 50%;
         transform: translateX(-50%);
     }
@@ -161,6 +159,47 @@ body {
         background-image: url('placeholder.png');
         background-size: cover;
         background-position: center;
+    }
+}
+
+.mood-festa {
+    @apply md:h-[250px] h-[170px];
+    position: relative;
+    
+    &::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+        background-image: url('plantas-fundo.jpg');
+        background-size:200%;
+        background-position: top center;
+        filter: brightness(0.5);
+    }
+}
+
+.garden {
+    @apply hidden md:block;
+    aspect-ratio: 1 / 1;
+    background-image: url('jardim.png');
+    background-size: cover;
+    background-position: center;
+    
+}
+
+.extra {
+    @apply md:w-full w-1/3;
+    background-size: cover;
+    background-position: center;
+    aspect-ratio: 1 / 1;
+    
+    &.extra-1 {
+        background-image: url('extra1.png');
+    }
+
+    &.extra-2 {
+        background-image: url('extra2.png');
     }
 }
 
@@ -192,9 +231,22 @@ body {
 }
 
 .input {
-    @apply border border-gray-300 rounded-md p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+    @apply border border-gray-300 p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
 }
 
 .button {
-    @apply px-4 py-2 bg-black text-white tracking-[0.2px] rounded-md uppercase cursor-pointer hover:bg-[#7a4787] transition-colors duration-300;
+    @apply px-4 py-2 bg-black text-white tracking-[0.2px] uppercase cursor-pointer hover:bg-[#7a4787] transition-colors duration-300;
+    font-weight: 600;
+}
+
+@media (width < 48rem) {
+    .small {
+        @apply text-sm flex-1 mr-4;
+    }
+}
+
+
+.cartao {
+    @apply bg-[#FFFBEB] flex-1 flex flex-row gap-4 items-center
+        md:flex-col md:items-stretch;
 }
