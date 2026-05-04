@@ -18,6 +18,7 @@ function App() {
 
     return (
         <>
+            <img src="logo.png" className="sticker h-50" alt="Logo" />
             <div className="max-w-[64rem] mx-auto md:gap-8 gap-6 flex flex-col">
                 <Header onClick={() => setCurrStage(STAGES.LANDING)} />
                 <div className="flex flex-col mb-4">
