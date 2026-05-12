@@ -111,7 +111,11 @@
 
 
 #root {
-    @apply md:!p-8 !p-6;
+    @apply md:p-8 p-6;
+    
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 body {
@@ -124,7 +128,7 @@ body {
 .foto-capa {
     width: 100%;
     height: 40vh;
-    background-image: url('danca.png');
+    background-image: url('/danca.png');
     background-size: auto 80vh;
     background-position: center;
     background-color: #580202;
@@ -141,27 +145,6 @@ body {
     }
 }
 
-.dc {
-
-    &.dc-1 {
-        background-image: url('placeholder.png');
-        background-size: cover;
-        background-position: center;
-    }
-
-    &.dc-2 {
-        background-image: url('placeholder.png');
-        background-size: cover;
-        background-position: center;
-    }
-
-    &.dc-3 {
-        background-image: url('placeholder.png');
-        background-size: cover;
-        background-position: center;
-    }
-}
-
 .mood-festa {
     @apply md:h-[250px] h-[170px];
     position: relative;
@@ -172,7 +155,7 @@ body {
         height: 100%;
         position: absolute;
         z-index: -1;
-        background-image: url('plantas-fundo.jpg');
+        background-image: url('/plantas-fundo.jpg');
         background-size:200%;
         background-position: top center;
         filter: brightness(0.5);
@@ -182,7 +165,7 @@ body {
 .garden {
     @apply hidden md:block;
     aspect-ratio: 1 / 1;
-    background-image: url('jardim.png');
+    background-image: url('/jardim.png');
     background-size: cover;
     background-position: center;
     
@@ -195,11 +178,11 @@ body {
     aspect-ratio: 1 / 1;
     
     &.extra-1 {
-        background-image: url('extra1.png');
+        background-image: url('/extra1.png');
     }
 
     &.extra-2 {
-        background-image: url('extra2.png');
+        background-image: url('/extra2.png');
     }
 }
 
@@ -232,6 +215,10 @@ body {
 
 .input {
     @apply border border-gray-300 p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+    
+    &.input-error {
+        @apply border-red-500 focus:ring-red-500;
+    }
 }
 
 .button {
@@ -246,23 +233,11 @@ body {
 }
 
 
-.cartao {
+.card {
     @apply bg-[#FFFBEB] flex-1 flex flex-row gap-4 items-center
         md:flex-col md:items-stretch;
 }
 
-.sticker {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #f0f0f0;
-  border: 5px solid white; /* The "die-cut" edge */
-  border-radius: 12px;
-  font-weight: bold;
-  transform: rotate(-2deg); /* Natural tilt */
-  filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.2)); /* Depth */
-  transition: transform 0.2s ease;
-}
-
-.sticker:hover {
-  transform: scale(1.1) rotate(0deg); /* Interactive feel */
+.title {
+    @apply uppercase font-bold tracking-[0.4px] md:text-4xl text-2xl text-center;
 }
