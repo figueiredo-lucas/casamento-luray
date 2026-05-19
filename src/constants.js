@@ -1,4 +1,10 @@
 
+export const PIX_CONFIG = {
+    key: '03667437161',
+    merchantName: 'Lucas Xavier Rocha Figueiredo',
+    merchantCity: 'Brasilia',
+}
+
 export const STAGES = {
     LANDING: 'LANDING',
     RSVP: 'RSVP',

@@ -1,5 +1,12 @@
 
+import { useState } from 'react'
+import QRCodeModal from './QRCodeModal'
+
 const LISTA_PRESENTES = [
+    {
+        title: 'Ajuda na passagem de avião',
+        price: 50
+    },
     {
         title: 'Conhecer um Izakaya',
         price: 50
@@ -39,6 +46,8 @@ const LISTA_PRESENTES = [
 ]
 
 const GiftList = () => {
+    const [selectedGift, setSelectedGift] = useState(null)
+
     return (
         <>
             <div className="title">
@@ -47,7 +56,11 @@ const GiftList = () => {
             <span>Estamos planejando uma lua de mel e ficaríamos felizes em receber 'experiências' ou parte da viagem como presente de casamento. Você pode escolher dentre as experiências abaixo e fazer um PIX.</span>
             <div className="grid md:grid-cols-3 grid-cols-2 gap-4">
                 {LISTA_PRESENTES.map((item, index) => (
-                    <div key={index} className="flex flex-col hover:shadow-lg transition-shadow cursor-pointer">
+                    <div
+                        key={index}
+                        className="flex flex-col hover:shadow-lg transition-shadow cursor-pointer"
+                        onClick={() => setSelectedGift(item)}
+                    >
                         <div className="bg-[#FFFBEB] w-full flex items-center justify-center py-8">
                             <img src="/chave-vert.png" />
                         </div>
@@ -63,6 +76,12 @@ const GiftList = () => {
                 <br />
                 No mais, sua presença é para nós o melhor presente! :)
             </span>
+
+            <QRCodeModal
+                isOpen={!!selectedGift}
+                onClose={() => setSelectedGift(null)}
+                gift={selectedGift}
+            />
         </>
     )
 }
