@@ -10,12 +10,12 @@ const GuestManual = ({ setCurrStage }) => {
                 <div className="text-center max-w-[80%] mx-auto">Aqui reunimos tudo que vocês precisam para aproveitar esse dia com tranquilidade ao nosso lado: traje, horários, localização e alguns detalhes especiais preparados com carinho.</div>
             </div>
             <div className="bar">
-                <div className="flex flex-col">
+                <div>
                     <div className="small-icon" style={{ backgroundImage: "url('/mini/cal-roxo.png')" }} />
                     <span className="font-bold">Data</span>
                     <span>29 de Agosto às 16h30</span>
                 </div>
-                <div className="flex flex-col">
+                <div>
                     <div className="small-icon" style={{ backgroundImage: "url('/mini/local-roxo.png')" }} />
                     <span className="font-bold">Local</span>
                     <span>
@@ -23,17 +23,17 @@ const GuestManual = ({ setCurrStage }) => {
                         href="https://www.google.com/maps/place/Mans%C3%A3o+Atrium/data=!4m2!3m1!1s0x0:0xb7c19f43275455cd?sa=X&ved=1t:2428&ictx=111">Mansão Atrium</a>
                         <br />Brasília, DF.</span>
                 </div>
-                <div className="flex flex-col">
+                <div>
                     <div className="small-icon" style={{ backgroundImage: "url('/mini/traje-roxo.png')" }} />
                     <span className="font-bold">Traje</span>
                     <span>Passeio Completo</span>
                 </div>
-                <div className="flex flex-col">
+                <div className="hide-sm">
                     <div className="small-icon" style={{ backgroundImage: "url('/mini/rsvp-roxo.png')" }} />
                     <span className="font-bold">RSVP</span>
                     <span>até 29 de Julho</span>
                 </div>
-                <div className="flex flex-col">
+                <div className="hide-sm">
                     <div className="small-icon" style={{ backgroundImage: "url('/mini/hotel-roxo.png')" }} />
                     <span className="font-bold">Hospedagem</span>
                     <span>Águas Claras (recomendado)</span>

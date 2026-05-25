@@ -262,10 +262,14 @@ body {
 }
 
 .bar {
-    @apply bg-[#FFFBEB] flex-1 flex flex-row gap-8 py-6 px-8 text-sm;
+    @apply bg-[#FFFBEB] flex-1 flex md:flex-row flex-col gap-8 py-6 px-8 text-sm;
     
     > div {
-        @apply flex-1 flex flex-col text-left items-start gap-1;
+        @apply flex-1 flex flex-col md:text-left md:items-start items-center gap-1;
+        
+        &.hide-sm {
+            /* @apply hidden md:flex; */
+        }
     }
 }
 
@@ -284,11 +288,13 @@ body {
     }
     
     .link-card {
-        @apply flex justify-between px-8 items-center cursor-pointer font-bold hover:text-[#7a4787] transition-colors duration-300;
+        @apply flex justify-between md:px-8 px-4 md:py-0 py-2 items-center cursor-pointer
+            font-bold hover:text-[#7a4787] transition-colors duration-300;
     }
 }
 
 .square-img {
+    @apply hidden md:block;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
