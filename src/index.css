@@ -171,21 +171,6 @@ body {
     
 }
 
-.extra {
-    @apply md:w-full w-1/3;
-    background-size: cover;
-    background-position: center;
-    aspect-ratio: 1 / 1;
-    
-    &.extra-1 {
-        background-image: url('/extra1.png');
-    }
-
-    &.extra-2 {
-        background-image: url('/extra2.png');
-    }
-}
-
 .spotify {
     @apply mt-[111px] h-[468px] bg-[#e6e6e6] relative flex items-center justify-center mb-[70px];
 
@@ -222,7 +207,7 @@ body {
 }
 
 .button {
-    @apply px-4 py-2 bg-black text-white tracking-[0.2px] uppercase cursor-pointer hover:bg-[#7a4787] transition-colors duration-300;
+    @apply text-sm px-4 py-2 bg-black text-white tracking-[0.2px] uppercase cursor-pointer hover:bg-[#7a4787] transition-colors duration-300;
     font-weight: 600;
 }
 
@@ -234,10 +219,101 @@ body {
 
 
 .card {
-    @apply bg-[#FFFBEB] flex-1 flex flex-row gap-4 items-center
+    @apply bg-[#FFFBEB] flex-1 flex flex-row gap-4 items-center pb-4
         md:flex-col md:items-stretch;
+        
+    .button {
+        @apply mx-6;
+    }
 }
+
+
 
 .title {
     @apply uppercase font-bold tracking-[0.4px] md:text-4xl text-2xl text-center;
+}
+
+.extra {
+    @apply md:w-full w-1/4;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 220px;
+    
+    &.extra-1 {
+        background-image: url('/extra1.png');
+    }
+
+    &.extra-2 {
+        background-image: url('/extra2.png');
+    }
+    
+    &.color-bg1 {
+        @apply bg-[#580202];
+        background-image: url('/calendario.png');
+        background-size: 20%;
+    }
+
+    &.color-bg2 {
+        @apply bg-[#7a4787];
+        background-image: url('/presente.png');
+        background-size: 20%;
+    }
+}
+
+.bar {
+    @apply bg-[#FFFBEB] flex-1 flex flex-row gap-8 py-6 px-8 text-sm;
+    
+    > div {
+        @apply flex-1 flex flex-col text-left items-start gap-1;
+    }
+}
+
+.small-icon {
+    @apply h-[22px] w-[22px] mb-4;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.side-card {
+    @apply bg-[#FFFBEB] flex-1 flex flex-row items-center text-sm;
+    
+    > div {
+        @apply flex-1;
+    }
+    
+    .link-card {
+        @apply flex justify-between px-8 items-center cursor-pointer font-bold hover:text-[#7a4787] transition-colors duration-300;
+    }
+}
+
+.square-img {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    aspect-ratio: 1 / 1;
+    
+    &.bg1 {
+        background-image: url('/bg-flower1.png');
+    }
+    
+    &.bg2 {
+        background-image: url('/bg-flower2.png');
+    }
+}
+
+.icon-rounded {
+    @apply w-[40px] h-[40px] rounded-full bg-[#FFFBEB] flex items-center justify-center p-4;
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.items-list {
+    @apply flex gap-6 items-start text-left text-sm;
+    
+    .subtitle {
+        @apply font-bold uppercase;
+    }
 }

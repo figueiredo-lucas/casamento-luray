@@ -3,6 +3,7 @@ import QRCode from 'qrcode'
 import { Pix } from './pix'
 import { PIX_CONFIG } from './constants'
 import { saveMessage } from './db/messagesRepo'
+import { MdClose } from 'react-icons/md'
 
 const QRCodeModal = ({ isOpen, onClose, gift }) => {
     const [qrDataUrl, setQrDataUrl] = useState(null)
@@ -56,9 +57,15 @@ const QRCodeModal = ({ isOpen, onClose, gift }) => {
             onClick={handleClose}
         >
             <div
-                className="bg-white rounded-2xl p-8 flex flex-col items-center gap-4 max-w-sm w-full mx-4"
+                className="bg-white rounded-2xl p-8 flex flex-col items-center gap-4 max-w-sm w-full mx-4 relative"
                 onClick={(e) => e.stopPropagation()}
             >
+                <button
+                    onClick={handleClose}
+                    className="absolute top-2 right-2 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer rounded-full text-2xl w-12 h-12 flex items-center justify-center"
+                >
+                    <MdClose />
+                </button>
                 <h2 className="text-xl font-bold text-center">{gift?.title}</h2>
                 <p className="text-slate-500">R$ {gift?.price}</p>
 
@@ -75,7 +82,7 @@ const QRCodeModal = ({ isOpen, onClose, gift }) => {
                     <input className="input rounded-xl w-full mb-2 text-sm" type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Seu nome" />
                     <textarea
                         placeholder="Se quiser, deixa um recadinho pra gente 💌"
-                        className="w-full rounded-xl input input-bordered p-3 pr-12 text-sm resize-none"
+                        className="w-full rounded-xl input input-bordered p-3 !pr-12 text-sm resize-none"
                         rows={3}
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
@@ -87,7 +94,7 @@ const QRCodeModal = ({ isOpen, onClose, gift }) => {
                     </button>
                 </div>}
                 {sent && (
-                    <p className="text-sm text-green-600 text-center">Recado enviado! 💚</p>
+                    <p className="text-sm text-[#7a4787] text-center">Recado enviado! 💜</p>
                 )}
 
                 <div className="flex flex-col items-center gap-0.5">
@@ -95,12 +102,7 @@ const QRCodeModal = ({ isOpen, onClose, gift }) => {
                     <span className="text-sm text-slate-500">Muito Obrigado!</span>
                 </div>
 
-                <button
-                    onClick={handleClose}
-                    className="mt-2 px-6 py-2 rounded-full bg-slate-100 hover:bg-slate-200 transition-colors text-sm cursor-pointer"
-                >
-                    Fechar
-                </button>
+                
             </div>
         </div>
     )
