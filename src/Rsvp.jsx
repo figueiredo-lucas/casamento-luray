@@ -10,6 +10,8 @@ const Rsvp = () => {
 
     const handleContinue = () => {
 
+        if (!guestCode) return setError('Por favor, informe o código do convite.')
+        
         getGuestData(guestCode).then(data => {
             
             if (!data) {
@@ -35,16 +37,18 @@ const Rsvp = () => {
     if (!guests)
         return (<form className="flex flex-col gap-6 items-center" onSubmit={(e) => { e.preventDefault(); handleContinue() }}>
             <span className="title">
-                Qual o código está no convite?
+                Confirmar presença
             </span>
-            <div className="flex flex-col gap-2 w-full text-center mt-4">
-                <span className="text-slate-500">Informe o código que recebeu.</span>
+            <span className="text-slate-500">Informe o código que recebeu no convite.</span>
+            <div className="flex flex-col gap-2 w-full text-center">
                 {error && <span className="text-red-500">{error}</span>}
-                <input
-                    type="text" placeholder="Identificação do convite" className={`input ${error ? 'input-error' : ''}`}
-                    onChange={(e) => setGuestCode(e.target.value)} value={guestCode} />
+                <div className="flex">
+                    <input
+                        type="text" placeholder="Identificação do convite" className={`input ${error ? 'input-error' : ''}`}
+                        onChange={(e) => { setError(null); setGuestCode(e.target.value) }} value={guestCode} />
+                    <button className="button" type="submit">Continuar</button>
+                </div>
             </div>
-            <button className="button" type="submit">Continuar</button>
         </form>)
 
     return (<div className="flex flex-col gap-6 items-center">

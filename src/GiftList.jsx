@@ -4,44 +4,64 @@ import QRCodeModal from './QRCodeModal'
 
 const LISTA_PRESENTES = [
     {
-        title: 'Ajuda na passagem de avião',
-        price: 50
+        title: 'Garantir as comprinhas',
+        price: 30,
+        icons: ['/gifts/kimono.svg']
     },
     {
-        title: 'Conhecer um Izakaya',
-        price: 50
+        title: 'Biscoitos para alimentar Cervos em Nara',
+        price: 50,
+        icons: ['/gifts/deer.svg']
     },
     {
         title: 'Degustação de Sakê',
-        price: 70
-    },
-    {
-        title: 'Cumprimentar cervos em Nara',
-        price: 70
-    },
-    {
-        title: 'Passear nos templos',
-        price: 150
+        price: 100,
+        icons: ['/gifts/shot.svg']
     },
     {
         title: 'Aula de japonês',
-        price: 160
+        price: 120,
+        icons: ['/gifts/hiragana.svg']
     },
     {
-        title: 'Ir num Sushi de verdade',
-        price: 200
-    },
-    {
-        title: 'Comer Wagyu Beef',
-        price: 150
-    },
-    {
-        title: 'Passeio de trem-bala',
-        price: 320
+        title: 'Passeio nos templos',
+        price: 150,
+        icons: ['/gifts/temple.svg']
     },
     {
         title: 'Relaxar num Onsen depois de andar 30 mil passos',
-        price: 200
+        price: 180,
+        icons: ['/gifts/onsen.svg']
+    },
+    {
+        title: 'Conhecer um Izakaya',
+        price: 200,
+        icons: ['/gifts/izakaya.svg']
+    },
+    {
+        title: 'Ir num Sushi de verdade',
+        price: 250,
+        icons: ['/gifts/sushi.svg']
+    },
+    {
+        title: 'Dária de hotel',
+        price: 230,
+        icons: ['/gifts/sleep.svg']
+    },
+    {
+        title: 'Passeio de trem-bala',
+        price: 320,
+        icons: ['/gifts/shinkansen.svg']
+    },
+    {
+        title: 'Passagem de avião',
+        price: 500,
+        icons: ['/gifts/airplane.svg']
+    },
+    {
+        title: 'Um presente especial',
+        price: 'Você escolhe o valor',
+        icons: ['/gifts/gift.svg']
     },
 ]
 
@@ -51,31 +71,37 @@ const GiftList = () => {
     return (
         <>
             <div className="title">
-                Presentes
+                Lista de Presentes
             </div>
-            <span>Estamos planejando uma lua de mel e ficaríamos felizes em receber 'experiências' ou parte da viagem como presente de casamento. Você pode escolher dentre as experiências abaixo e fazer um PIX.</span>
-            <div className="grid md:grid-cols-3 grid-cols-2 gap-4">
+            <div className="flex flex-col gap-1">
+                <span>Estamos organizando nossa lua de mel com muito carinho e, se quiserem, vocês podem nos ajudar a tornar essa viagem ainda mais especial. Escolham uma das opções abaixo ou contribuam com qualquer valor via PIX.
+                    <br />Fiquem à vontade para dar apenas o que fizer sentido para vocês.</span>
+                <strong>Mas, acima de tudo, o nosso maior presente é ter vocês com a gente nesse dia tão importante!</strong>
+            </div>
+            <div className="grid md:grid-cols-4 grid-cols-2 gap-4 gap-y-8">
                 {LISTA_PRESENTES.map((item, index) => (
                     <div
                         key={index}
-                        className="flex flex-col hover:shadow-lg transition-shadow cursor-pointer"
+                        className="flex flex-col shadow cursor-pointer"
                         onClick={() => setSelectedGift(item)}
                     >
-                        <div className="bg-[#FFFBEB] w-full flex items-center justify-center py-8">
-                            <img src="/chave-vert.png" />
+                        <div className="bg-[#FFFBEB] w-full flex items-center justify-center aspect-square">
+                            {item.icons.map((icon, iconIndex) => (
+                                <img key={iconIndex} src={icon} className="mx-1" />
+                            ))}
                         </div>
-                        <div className="flex flex-col items-center justify-center gap-1 p-4">
+                        <div className="flex flex-col items-center justify-center p-4">
                             <span className="font-bold">{item.title}</span>
-                            <span className="text-sm text-slate-500">R$ {item.price}</span>
+                            <span className="text-sm text-slate-500">{typeof item.price === 'number' ? `R$ ${item.price}` : item.price}</span>
                         </div>
                     </div>
                 ))}
             </div>
-            <span>
+            {/* <span>
                 Essas são só algumas ideias, mas fique à vontade para contribuir com o valor desejado, se puder e quiser!
                 <br />
                 No mais, sua presença é para nós o melhor presente! :)
-            </span>
+            </span> */}
 
             <QRCodeModal
                 isOpen={!!selectedGift}

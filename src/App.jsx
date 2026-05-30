@@ -49,6 +49,7 @@ function App() {
                         </div>
                     )}
                 </div>}
+                <div className="mx-auto w-32 h-10" style={{ backgroundImage: "url('/chave2.png')", backgroundSize: "100%", backgroundPosition: "cover" }}></div>
             </div >
         </>
     )

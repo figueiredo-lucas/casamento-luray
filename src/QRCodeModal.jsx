@@ -4,12 +4,29 @@ import { Pix } from './pix'
 import { PIX_CONFIG } from './constants'
 import { saveMessage } from './db/messagesRepo'
 import { MdClose } from 'react-icons/md'
+import { BiCopy, BiQrScan, BiSolidKey } from 'react-icons/bi'
+
+const TABS = {
+    CHAVE: 'chave',
+    QRCODE: 'qrcode',
+}
 
 const QRCodeModal = ({ isOpen, onClose, gift }) => {
     const [qrDataUrl, setQrDataUrl] = useState(null)
+    const [pixPayload, setPixPayload] = useState(null)
     const [name, setName] = useState('')
     const [message, setMessage] = useState('')
     const [sent, setSent] = useState(false)
+    const [tab, setTab] = useState(TABS.CHAVE)
+
+    const _formatCPF = cpf => {
+        return cpf
+            .replace(/\D/g, '')
+            .replace(/(\d{3})(\d)/, '$1.$2')
+            .replace(/(\d{3})(\d)/, '$1.$2')
+            .replace(/(\d{3})(\d{1,2})/, '$1-$2')
+            .replace(/(-\d{2})\d+?$/, '$1')
+    }
 
     const handleSend = async () => {
         if (!name.trim() && !message.trim()) return
@@ -18,9 +35,11 @@ const QRCodeModal = ({ isOpen, onClose, gift }) => {
         setName('')
         setMessage('')
     }
-    
+
     const handleClose = () => {
         setQrDataUrl(null)
+        setPixPayload(null)
+        setTab(TABS.CHAVE)
         setName('')
         setMessage('')
         setSent(false)
@@ -29,23 +48,33 @@ const QRCodeModal = ({ isOpen, onClose, gift }) => {
 
     useEffect(() => {
         if (!isOpen || !gift) return
-
+        
         const txid = gift.title
             .normalize('NFD')
             .replace(/[\u0300-\u036f]/g, '')
             .replace(/[^a-zA-Z0-9]/g, '')
             .slice(0, 25)
+            
+        const name = PIX_CONFIG.merchantName.normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-zA-Z0-9]/g, '')
+            .slice(0, 25)
+
+        const price = typeof gift.price === 'number' ? gift.price : 0
 
         const pix = new Pix(
             PIX_CONFIG.key,
             gift.title,
-            PIX_CONFIG.merchantName,
+            name,
             PIX_CONFIG.merchantCity,
             txid,
-            gift.price
+            price
         )
 
-        QRCode.toDataURL(pix.getPayload(), { width: 280, margin: 2 })
+        // eslint-disable-next-line
+        setPixPayload(pix.getPayload())
+        
+        QRCode.toDataURL(pix.getPayload(), { width: 136, margin: 2 })
             .then(setQrDataUrl)
     }, [isOpen, gift])
 
@@ -57,28 +86,67 @@ const QRCodeModal = ({ isOpen, onClose, gift }) => {
             onClick={handleClose}
         >
             <div
-                className="bg-white rounded-2xl p-8 flex flex-col items-center gap-4 max-w-sm w-full mx-4 relative"
+                className="bg-white rounded-2xl p-8 flex flex-col gap-4 max-w-sm w-full mx-4 relative items-start"
                 onClick={(e) => e.stopPropagation()}
             >
-                <button
+                {/* <button
                     onClick={handleClose}
                     className="absolute top-2 right-2 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer rounded-full text-2xl w-12 h-12 flex items-center justify-center"
                 >
                     <MdClose />
-                </button>
-                <h2 className="text-xl font-bold text-center">{gift?.title}</h2>
-                <p className="text-slate-500">R$ {gift?.price}</p>
+                </button> */}
+                <h2 className="text-xl font-bold">{gift?.title}</h2>
+                {typeof gift?.price === 'number' && <p className="text-slate-500">{`R$ ${gift?.price}`}</p>}
 
-                <p className="text-xs text-slate-400 text-center">
+                <div className="flex w-full justify-start gap-2">
+                    <div className={`flex gap-1 px-1 font-semibold items-center border-b-4 border-transparent cursor-pointer
+                        ${tab === TABS.CHAVE ? 'text-purple border-purple' : ''}`}
+                        onClick={() => setTab(TABS.CHAVE)}>
+                        <BiSolidKey /> Chave Pix
+                    </div>
+                    <div className={`flex gap-1 px-1 font-semibold items-center border-b-4 border-transparent cursor-pointer
+                        ${tab === TABS.QRCODE ? 'text-purple  border-purple' : ''}`}
+                        onClick={() => setTab(TABS.QRCODE)}>
+                        <BiQrScan /> QR Code
+                    </div>
+                </div>
+
+                {/* <p className="text-xs text-slate-400 text-center">
                     Abra o app do seu banco, acesse Pix e escaneie o QR Code.
-                </p>
+                </p> */}
 
-                {qrDataUrl
-                    ? <img src={qrDataUrl} alt="QR Code Pix" className="w-48 h-48" />
-                    : <div className="w-48 h-48 flex items-center justify-center text-slate-400">Gerando QR Code...</div>
-                }
+                {tab === TABS.CHAVE && (
+                    <div className="flex flex-col gap-2 text-left text-sm mb-[30px] w-full">
+                        <div className="flex justify-between items-center">
+                            <div className="flex flex-col">
+                                <span>Chave Pix (CPF)</span>
+                                <strong>{_formatCPF(PIX_CONFIG.key)}</strong>
+                            </div>
+                            <button onClick={() => navigator.clipboard.writeText(PIX_CONFIG.key)} className="text-slate-400 hover:text-slate-600 transition-colors cursor-pointer flex items-center gap-1 border rounded px-2">
+                                <BiCopy /> Copiar
+                            </button>
+                        </div>
+                        <div className="flex flex-col">
+                            <span>Nome</span>
+                            <strong>{PIX_CONFIG.merchantName}</strong>
+                        </div>
+                        <div className="flex flex-col">
+                            <span>Banco</span>
+                            <strong>{PIX_CONFIG.bankName}</strong>
+                        </div>
+                    </div>
+                )}
+                
+                {tab === TABS.QRCODE && (
+                    <div className="flex flex-col items-center gap-2 w-full">
+                        <img src={qrDataUrl} alt="QR Code Pix" className="w-34 h-34 mx-auto" />
+                        <button onClick={() => navigator.clipboard.writeText(pixPayload)} className="text-sm text-slate-400 hover:text-slate-600 transition-colors cursor-pointer flex items-center gap-1 border rounded px-2">
+                            <BiCopy /> Copiar
+                        </button>
+                    </div>
+                )}
 
-                {!sent && <div className="relative w-full">
+                {/* {!sent && <div className="relative w-full">
                     <input className="input rounded-xl w-full mb-2 text-sm" type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Seu nome" />
                     <textarea
                         placeholder="Se quiser, deixa um recadinho pra gente 💌"
@@ -94,15 +162,15 @@ const QRCodeModal = ({ isOpen, onClose, gift }) => {
                     </button>
                 </div>}
                 {sent && (
-                    <p className="text-sm text-[#7a4787] text-center">Recado enviado! 💜</p>
-                )}
+                    <p className="text-sm text-purple text-center">Recado enviado! 💜</p>
+                )} */}
 
-                <div className="flex flex-col items-center gap-0.5">
+                <div className="flex flex-col items-center gap-0.5 w-full">
                     <span className="text-lg">ありがとうございます</span>
                     <span className="text-sm text-slate-500">Muito Obrigado!</span>
                 </div>
 
-                
+
             </div>
         </div>
     )

@@ -116,6 +116,8 @@
     max-width: 1280px;
     margin: 0 auto;
     text-align: center;
+    --purple: #7a4787;
+    --beige: #FFFBEB;
 }
 
 body {
@@ -138,7 +140,7 @@ body {
     &::after {
         @apply w-[6px] md:h-[60px] h-[40px] md:bottom-[-30px] bottom-[-20px];
         content: "";
-        background: #7a4787;
+        background: var(--purple);
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
@@ -199,15 +201,15 @@ body {
 }
 
 .input {
-    @apply border border-gray-300 p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+    @apply bg-[#FFFBEB] p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
     
     &.input-error {
-        @apply border-red-500 focus:ring-red-500;
+        @apply border border-red-500 focus:ring-red-500;
     }
 }
 
 .button {
-    @apply text-sm px-4 py-2 bg-black text-white tracking-[0.2px] uppercase cursor-pointer hover:bg-[#7a4787] transition-colors duration-300;
+    @apply text-sm px-4 py-2 bg-black text-white tracking-[0.2px] uppercase cursor-pointer hover:bg-[var(--purple)] transition-colors duration-300;
     font-weight: 600;
 }
 
@@ -219,8 +221,8 @@ body {
 
 
 .card {
-    @apply bg-[#FFFBEB] flex-1 flex flex-row gap-4 items-center pb-4
-        md:flex-col md:items-stretch;
+    @apply bg-[#FFFBEB] flex-1 flex gap-4 items-center pb-4
+        flex-col items-stretch;
         
     .button {
         @apply mx-6;
@@ -230,15 +232,14 @@ body {
 
 
 .title {
-    @apply uppercase font-bold tracking-[0.4px] md:text-4xl text-2xl text-center;
+    @apply font-bold tracking-[0.4px] md:text-4xl text-2xl text-center;
 }
 
 .extra {
-    @apply md:w-full w-1/4;
+    @apply w-full md:h-[220px] h-[110px];
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 220px;
     
     &.extra-1 {
         background-image: url('/extra1.png');
@@ -249,15 +250,13 @@ body {
     }
     
     &.color-bg1 {
-        @apply bg-[#580202];
-        background-image: url('/calendario.png');
-        background-size: 20%;
+        @apply bg-[#580202] md:bg-size-[48px] bg-size-[32px];
+        background-image: url('/landing/calendar.svg');
     }
 
     &.color-bg2 {
-        @apply bg-[#7a4787];
-        background-image: url('/presente.png');
-        background-size: 20%;
+        @apply bg-[var(--purple)]  md:bg-size-[48px] bg-size-[32px];
+        background-image: url('/landing/giftlist.svg');
     }
 }
 
@@ -289,7 +288,7 @@ body {
     
     .link-card {
         @apply flex justify-between md:px-8 px-4 md:py-0 py-2 items-center cursor-pointer
-            font-bold hover:text-[#7a4787] transition-colors duration-300;
+            font-bold hover:text-[var(--purple)] transition-colors duration-300;
     }
 }
 
@@ -322,4 +321,14 @@ body {
     .subtitle {
         @apply font-bold uppercase;
     }
+}
+
+
+
+.text-purple {
+    color: var(--purple);
+}
+
+.border-purple {
+    border-color: var(--purple);
 }

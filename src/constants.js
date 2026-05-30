@@ -1,8 +1,9 @@
 
 export const PIX_CONFIG = {
-    key: '03667437161',
-    merchantName: 'Lucas Xavier Rocha Figueiredo',
+    key: '00913587109',
+    merchantName: 'Rayssa Arianne Morais de Araújo',
     merchantCity: 'Brasilia',
+    bankName: '260 - Nu Pagamentos S.A.',
 }
 
 export const STAGES = {

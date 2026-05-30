@@ -46,7 +46,7 @@ const GuestManual = ({ setCurrStage }) => {
                     <div className="link-card"
                         onClick={() => setCurrStage(STAGES.GIFT_LIST)}>
                         <span>LISTA DE PRESENTES</span>
-                        <span className="text-xl text-[#7a4787]">▶</span>
+                        <span className="text-xl text-purple">▶</span>
                     </div>
                 </div>
                 <div className="side-card">
@@ -54,7 +54,7 @@ const GuestManual = ({ setCurrStage }) => {
                     <div className="link-card"
                         onClick={() => setCurrStage(STAGES.RSVP)}>
                         <span>CONFIRMAR PRESENÇA</span>
-                        <span className="text-xl text-[#7a4787]">▶</span>
+                        <span className="text-xl text-purple">▶</span>
                     </div>
                 </div>
             </div>
