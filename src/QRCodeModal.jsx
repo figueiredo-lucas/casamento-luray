@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import QRCode from 'qrcode'
 import { Pix } from './pix'
 import { PIX_CONFIG } from './constants'
-import { saveMessage } from './db/messagesRepo'
+// import { saveMessage } from './db/messagesRepo'
 import { MdClose } from 'react-icons/md'
 import { BiCopy, BiQrScan, BiSolidKey } from 'react-icons/bi'
 
@@ -14,9 +14,9 @@ const TABS = {
 const QRCodeModal = ({ isOpen, onClose, gift }) => {
     const [qrDataUrl, setQrDataUrl] = useState(null)
     const [pixPayload, setPixPayload] = useState(null)
-    const [name, setName] = useState('')
-    const [message, setMessage] = useState('')
-    const [sent, setSent] = useState(false)
+    // const [name, setName] = useState('')
+    // const [message, setMessage] = useState('')
+    // const [sent, setSent] = useState(false)
     const [tab, setTab] = useState(TABS.CHAVE)
 
     const _formatCPF = cpf => {
@@ -28,21 +28,21 @@ const QRCodeModal = ({ isOpen, onClose, gift }) => {
             .replace(/(-\d{2})\d+?$/, '$1')
     }
 
-    const handleSend = async () => {
-        if (!name.trim() && !message.trim()) return
-        await saveMessage(name.trim(), message.trim())
-        setSent(true)
-        setName('')
-        setMessage('')
-    }
+    // const handleSend = async () => {
+    //     if (!name.trim() && !message.trim()) return
+    //     await saveMessage(name.trim(), message.trim())
+    //     setSent(true)
+    //     setName('')
+    //     setMessage('')
+    // }
 
     const handleClose = () => {
         setQrDataUrl(null)
         setPixPayload(null)
         setTab(TABS.CHAVE)
-        setName('')
-        setMessage('')
-        setSent(false)
+        // setName('')
+        // setMessage('')
+        // setSent(false)
         onClose()
     }
 

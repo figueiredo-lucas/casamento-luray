@@ -6,10 +6,17 @@ import { STAGES } from './constants';
 import Landing from './Landing';
 import GiftList from './GiftList';
 import GuestManual from './GuestManual';
+import { useEffect } from 'react';
 
 function App() {
 
     const [currStage, setCurrStage] = useState(STAGES.LANDING)
+    
+    useEffect(() => {
+        
+        window.scrollTo({ top: 0 })
+        
+    }, [currStage])
 
     return (
         <>
