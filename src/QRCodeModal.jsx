@@ -59,12 +59,17 @@ const QRCodeModal = ({ isOpen, onClose, gift }) => {
             .replace(/[\u0300-\u036f]/g, '')
             .replace(/[^a-zA-Z0-9]/g, '')
             .slice(0, 25)
+            
+        const title = gift.title.normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-zA-Z0-9]/g, '')
+            .slice(0, 25)
 
         const price = typeof gift.price === 'number' ? gift.price : 0
 
         const pix = new Pix(
             PIX_CONFIG.key,
-            gift.title,
+            title,
             name,
             PIX_CONFIG.merchantCity,
             txid,
