@@ -225,7 +225,7 @@ body {
         flex-col items-stretch;
         
     .button {
-        @apply mx-6;
+        @apply md:mx-6 mx-14;
     }
 }
 
