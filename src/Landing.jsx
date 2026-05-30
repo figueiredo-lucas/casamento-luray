@@ -1,6 +1,10 @@
 import { STAGES } from './constants'
 import SideBySideText from './SideBySideText'
 
+const LINK = "https://calendar.google.com/calendar/r/eventedit?dates=20260829T163000/20260829T230000&location=Mansão%20Atrium%2C%20Park%20Way%2C%20Brasília&text=Casamento%20Rayssa%20%26%20Lucas"
+
+const LINK2 = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Casamento+Rayssa+e+Lucas&dates=20260829T163000/20260829T230000&location=Mansao+Atrium,+Park+Way,+Brasilia&ctz=America/Sao_Paulo"
+
 const Landing = ({ setCurrStage }) => {
     return (
         <>
@@ -37,8 +41,9 @@ const Landing = ({ setCurrStage }) => {
                 </div>
                 <div className="card">
                     <div className="extra color-bg1"></div>
-                    <a className="button small"
-                        target="_blank" href="https://calendar.google.com/calendar/r/eventedit?dates=20260829T163000/20260829T230000&location=Mansão%20Atrium%2C%20Park%20Way%2C%20Brasília&text=Casamento%20Rayssa%20%26%20Lucas">ADICIONAR A AGENDA</a>
+                    {/* <a className="button small" target="_blank" href={LINK}>ADICIONAR A AGENDA</a> */}
+                        
+                    <a className="button small" target="_blank" href={LINK2}>ADICIONAR A AGENDA</a>
                 </div>
                 <div className="card">
                     <div className="extra extra-1"></div>
