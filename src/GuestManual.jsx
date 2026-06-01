@@ -66,9 +66,9 @@ const GuestManual = () => {
                         <div className="subtitle">Confirme sua presença com antecedência</div>
                         <div className="content flex flex-col gap-3">
                             Sua presença é muito importante para nós! Por isso, pedimos que nos avise com antecedência se poderá comparecer. Isso nos ajudará a organizar tudo da melhor forma possível.
-                            <div className="flex flex-col text-xs">
+                            <div className="flex flex-col text-xs leading-[18px]">
                                 <strong>Não estou conseguindo confirmar minha presença. E agora?</strong>
-                                Caso não consiga fazer o RSVP pelo site, pode ligar ou mandar uma mensagem no Whatsapp para nossa cerimonialista, a Lys (61) 98307-9291.
+                                <span>Caso não consiga fazer o RSVP pelo site, pode ligar ou mandar uma mensagem no Whatsapp para nossa cerimonialista, a <strong>Lys (61) 98307-9291</strong>.</span>
                             </div>
                         </div>
                     </div>
@@ -84,14 +84,15 @@ const GuestManual = () => {
                     <div className="icon-rounded" style={{ backgroundImage: "url('/mini/traje-roxo.png')" }}></div>
                     <div className="flex flex-col flex-1">
                         <div className="subtitle">Traje do evento</div>
-                        <div className="content">O traje é Passeio Completo! É bom também pensar em um sapato que seja confortável e adequado para jardins, já que boa parte da festa será em um! Por favor, só evite vestido totalmente branco e vestido laranja ou ternos beges para que você não seja confundido com os madrinhas e padrinhos.</div>
+                        <div className="content">O traje é <strong>Passeio Completo</strong>! É bom também pensar em um sapato que seja confortável e adequado para jardins, já que a festa será em um! Por favor, só evite vestidos e ternos totalmente brancos, bege ou marsala para que você não seja confundido com os noivos, madrinhas e padrinhos.</div>
+                        <div className="content mt-3">O objetivo do traje é estar elegante, mas sem pesar. Pense em leveza e conforto, sem perder a elegância de um evento mais formal!</div>
                     </div>
                 </div>
                 <div className="items-list">
                     <div className="icon-rounded" style={{ backgroundImage: "url('/mini/presente-roxo.png')" }}></div>
                     <div className="flex flex-col flex-1">
                         <div className="subtitle">Lista de Presente</div>
-                        <div className="content">Não temos lista de presentes físicos, porque já moramos juntos e temos muitas coisas, mas pensamos em algumas soluções para quem quiser e puder dar algum presente. Nós estamos planejando uma lua de mel e ficaríamos felizes em receber 'experiências' como presente de casamento! </div>
+                        <div className="content"><strong>Não temos lista de presentes físicos</strong>, porque já moramos juntos e temos muitas coisas, mas pensamos em algumas soluções para quem quiser e puder dar algum presente. Nós estamos planejando uma lua de mel e ficaríamos felizes em receber 'experiências' como presente de casamento! </div>
                     </div>
                 </div>
                 <div className="items-list">

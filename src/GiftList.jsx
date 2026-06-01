@@ -85,7 +85,7 @@ const GiftList = () => {
                         className="flex flex-col shadow cursor-pointer"
                         onClick={() => setSelectedGift(item)}
                     >
-                        <div className="bg-[#FFFBEB] w-full flex items-center justify-center aspect-square">
+                        <div className="bg-beige w-full flex items-center justify-center aspect-square">
                             {item.icons.map((icon, iconIndex) => (
                                 <img key={iconIndex} src={icon} className="mx-1" />
                             ))}

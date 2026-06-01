@@ -61,7 +61,7 @@ const Rsvp = () => {
         <div className="flex flex-col w-full gap-4">
             <ul className="flex flex-col gap-2 w-full">
                 {guests.map((guest, index) => (
-                    <li key={index} className="flex items-center gap-2 bg-[#FFFBEB] py-2 px-4 rounded">
+                    <li key={index} className="flex items-center gap-2 bg-beige py-2 px-4 rounded">
                         <span className="flex-1 text-left font-bold">{guest.name}</span>
                         <button className="cursor-pointer w-8 h-8 flex items-center justify-center"
                             onClick={() => confirm(guest, index, false)}>

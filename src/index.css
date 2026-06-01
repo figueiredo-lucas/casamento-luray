@@ -117,7 +117,7 @@
     margin: 0 auto;
     text-align: center;
     --purple: #7a4787;
-    --beige: #FFFBEB;
+    --beige: #FFFaf5;
 }
 
 body {
@@ -130,8 +130,8 @@ body {
 .foto-capa {
     width: 100%;
     height: 40vh;
-    background-image: url('/danca.png');
-    background-size: auto 80vh;
+    /* background-image: url('/danca.png');
+    background-size: auto 80vh; */
     /* background-position: center; */
     background-position: 50% 72%;
     background-image: url('/foto4.jpeg');
@@ -141,6 +141,12 @@ body {
     background-color: #580202;
     background-repeat: no-repeat;
     position: relative;
+    
+    &.danca {
+        background-image: url('/danca.png');
+        background-size: auto 80vh;
+        background-position: center;
+    }
 
     &::after {
         @apply w-[6px] md:h-[60px] h-[40px] md:bottom-[-30px] bottom-[-20px];
@@ -206,7 +212,7 @@ body {
 }
 
 .input {
-    @apply bg-[#FFFBEB] p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+    @apply bg-[var(--beige)] p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
     
     &.input-error {
         @apply border border-red-500 focus:ring-red-500;
@@ -230,7 +236,7 @@ body {
 
 
 .card {
-    @apply bg-[#FFFBEB] flex-1 flex gap-4 items-center pb-4
+    @apply bg-[var(--beige)] flex-1 flex gap-4 items-center pb-4
         flex-col items-stretch;
         
     .button {
@@ -270,7 +276,7 @@ body {
 }
 
 .bar {
-    @apply bg-[#FFFBEB] flex-1 flex md:flex-row flex-col gap-8 py-6 px-8 text-sm;
+    @apply bg-[var(--beige)] flex-1 flex md:flex-row flex-col gap-8 py-6 px-8 text-sm;
     
     > div {
         @apply flex-1 flex flex-col md:text-left md:items-start items-center gap-1;
@@ -289,24 +295,26 @@ body {
 }
 
 .side-card {
-    @apply bg-[#FFFBEB] flex-1 flex flex-row items-center text-sm;
+    @apply bg-[var(--beige)] flex-1 flex flex-row items-center text-sm;
     
-    > div {
+    /* > div {
         @apply flex-1;
-    }
+    } */
     
     .link-card {
-        @apply flex justify-between md:px-8 px-4 md:py-0 py-2 items-center cursor-pointer
-            font-bold hover:text-[var(--purple)] transition-colors duration-300;
+        @apply flex flex-1 gap-4 justify-around md:px-4 px-4 md:py-0 py-2 items-center cursor-pointer
+            font-bold hover:text-[var(--purple)] transition-colors duration-300 md:text-lg;
     }
 }
 
 .square-img {
     @apply hidden md:block;
-    background-size: cover;
-    background-position: center;
+    background-size: contain;
+    background-position: left;
     background-repeat: no-repeat;
-    aspect-ratio: 1 / 1;
+    width: 185px;
+    height: 160px;
+    
     
     &.bg1 {
         background-image: url('/bg-flower1.png');
@@ -318,7 +326,7 @@ body {
 }
 
 .icon-rounded {
-    @apply w-[40px] h-[40px] rounded-full bg-[#FFFBEB] flex items-center justify-center p-4;
+    @apply w-[40px] h-[40px] rounded-full bg-[var(--beige)] flex items-center justify-center p-4;
     background-size: 40%;
     background-repeat: no-repeat;
     background-position: center;
@@ -328,7 +336,11 @@ body {
     @apply flex gap-6 items-start text-left text-sm;
     
     .subtitle {
-        @apply font-bold uppercase;
+        @apply font-bold uppercase leading-[28px];
+    }
+    
+    .content {
+        @apply leading-[24px];
     }
 }
 
@@ -340,4 +352,8 @@ body {
 
 .border-purple {
     border-color: var(--purple);
+}
+
+.bg-beige {
+    background-color: var(--beige);
 }
