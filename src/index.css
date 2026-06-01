@@ -132,7 +132,12 @@ body {
     height: 40vh;
     background-image: url('/danca.png');
     background-size: auto 80vh;
-    background-position: center;
+    /* background-position: center; */
+    background-position: 50% 72%;
+    background-image: url('/foto4.jpeg');
+    background-size: cover;
+    
+    
     background-color: #580202;
     background-repeat: no-repeat;
     position: relative;
@@ -216,6 +221,10 @@ body {
 @media (width < 48rem) {
     .small {
         @apply text-sm flex-1 mr-4;
+    }
+    
+    .foto-capa {
+        background-size: 250%;
     }
 }
 
