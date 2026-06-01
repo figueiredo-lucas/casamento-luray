@@ -56,7 +56,7 @@ const Rsvp = () => {
             <span className="title">
                 Confirme sua presença
             </span>
-            <span className="text-center">Favor confirmar até o dia <strong>29 de Julho de 2026</strong>.</span>
+            <span className="text-center">Favor confirmar até o dia <strong>29 de Julho de 2026</strong>. Caso não seja você, fale com a gente!</span>
         </div>
         <div className="flex flex-col w-full gap-4">
             <ul className="flex flex-col gap-2 w-full">
