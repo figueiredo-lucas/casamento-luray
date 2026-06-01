@@ -1,6 +1,7 @@
-import { STAGES } from "./constants"
+import { useNavigate } from "react-router-dom"
 
-const GuestManual = ({ setCurrStage }) => {
+const GuestManual = () => {
+    const navigate = useNavigate()
     return (
         <>
             <div className="flex flex-col gap-4">
@@ -44,7 +45,7 @@ const GuestManual = ({ setCurrStage }) => {
                 <div className="side-card">
                     <div className="square-img bg1"></div>
                     <div className="link-card"
-                        onClick={() => setCurrStage(STAGES.GIFT_LIST)}>
+                        onClick={() => navigate('/lista')}>
                         <span>LISTA DE PRESENTES</span>
                         <span className="text-xl text-purple">▶</span>
                     </div>
@@ -52,7 +53,7 @@ const GuestManual = ({ setCurrStage }) => {
                 <div className="side-card">
                     <div className="square-img bg2"></div>
                     <div className="link-card"
-                        onClick={() => setCurrStage(STAGES.RSVP)}>
+                        onClick={() => navigate('/rsvp')}>
                         <span>CONFIRMAR PRESENÇA</span>
                         <span className="text-xl text-purple">▶</span>
                     </div>
@@ -97,7 +98,7 @@ const GuestManual = ({ setCurrStage }) => {
                     <div className="icon-rounded" style={{ backgroundImage: "url('/mini/anel-roxo.png')" }}></div>
                     <div className="flex flex-col flex-1">
                         <div className="subtitle">Participe da cerimônia</div>
-                        <div className="content">A Cerimônia é um dos momentos mais significativos para nós, noivos, e sua presença faz toda a diferença. Esteja presente, tire muitas fotos, curta com a gente!</div>
+                        <div className="content">A Cerimônia é um dos momentos mais significativos para nós, noivos, e sua presença faz toda a diferença. Esteja presente, e curta com a gente!</div>
                     </div>
                 </div>
                 <div className="items-list">
