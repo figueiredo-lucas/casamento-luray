@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { getGuestData, saveGuestData } from "./db/guestsRepo"
 import { FaCheck, FaTimes } from "react-icons/fa"
+import { toast } from "react-toastify"
 
 const Rsvp = () => {
 
@@ -74,6 +75,11 @@ const Rsvp = () => {
                     </li>
                 ))}
             </ul>
+            <div>
+                <button className="button" onClick={() => {
+                    toast.success('Escolha confirmada!');
+                }}>Enviar</button>
+            </div>
         </div>
     </div>)
 }

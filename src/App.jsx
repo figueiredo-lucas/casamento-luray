@@ -6,6 +6,8 @@ import Landing from './Landing';
 import GiftList from './GiftList';
 import GuestManual from './GuestManual';
 import { useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
     const navigate = useNavigate()
@@ -18,6 +20,7 @@ function App() {
 
     return (
         <>
+            <ToastContainer position="top-center" autoClose={3000} />
             <div className="mx-auto md:gap-8 gap-6 flex flex-col">
                 <Header onClick={() => navigate('/')} />
                 <div className="flex flex-col mb-4">
