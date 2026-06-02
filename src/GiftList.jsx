@@ -5,12 +5,12 @@ import QRCodeModal from './QRCodeModal'
 const LISTA_PRESENTES = [
     {
         title: 'Garantir as comprinhas',
-        price: 30,
+        price: 60,
         icons: ['/gifts/kimono.svg']
     },
     {
         title: 'Biscoitos para alimentar Cervos em Nara',
-        price: 50,
+        price: 80,
         icons: ['/gifts/deer.svg']
     },
     {
