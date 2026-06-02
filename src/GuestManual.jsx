@@ -31,7 +31,7 @@ const GuestManual = () => {
                 </div>
                 <div className="hide-sm">
                     <div className="small-icon" style={{ backgroundImage: "url('/mini/rsvp-roxo.png')" }} />
-                    <span className="font-bold">RSVP</span>
+                    <span className="font-bold">Confirmar presença</span>
                     <span>até 29 de Julho</span>
                 </div>
                 <div className="hide-sm">
