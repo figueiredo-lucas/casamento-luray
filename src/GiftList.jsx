@@ -44,7 +44,7 @@ const LISTA_PRESENTES = [
         icons: ['/gifts/sushi.svg']
     },
     {
-        title: 'Dária de hotel',
+        title: 'Diária de hotel',
         price: 230,
         icons: ['/gifts/sleep.svg']
     },
