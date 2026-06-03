@@ -68,7 +68,7 @@ const GuestManual = () => {
                             Sua presença é muito importante para nós! Por isso, pedimos que nos avise com antecedência se poderá comparecer. Isso nos ajudará a organizar tudo da melhor forma possível.
                             <div className="flex flex-col text-xs leading-[18px]">
                                 <strong>Não estou conseguindo confirmar minha presença. E agora?</strong>
-                                <span>Caso não consiga fazer o RSVP pelo site, pode ligar ou mandar uma mensagem no Whatsapp para nossa cerimonialista, a <strong>Lys (61) 98307-9291</strong>.</span>
+                                <span>Caso não consiga confirmar sua presença pelo site, pode ligar ou mandar uma mensagem no Whatsapp para nossa cerimonialista, a <strong>Lys (61) 98307-9291</strong>.</span>
                             </div>
                         </div>
                     </div>
