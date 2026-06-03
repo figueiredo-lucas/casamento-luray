@@ -1,5 +1,28 @@
-import { ref, set, get } from 'firebase/database'
+import { ref, set, get, onValue } from 'firebase/database'
 import { db } from './firebase'
+
+// obter todos os convidados
+export async function getAllGuests() {
+    const snapshot = await get(ref(db, 'guests'))
+    const data = snapshot.val()
+    if (!data) return []
+    return Object.entries(data).flatMap(([code, guests]) =>
+        Object.values(guests).map(guest => ({ ...guest, code }))
+    )
+}
+
+// ouvir todos os convidados em tempo real; retorna função de unsubscribe
+export function listenAllGuests(callback) {
+    return onValue(ref(db, 'guests'), snapshot => {
+        const data = snapshot.val()
+        if (!data) return callback([])
+        callback(
+            Object.entries(data).flatMap(([code, guests]) =>
+                Object.values(guests).map(guest => ({ ...guest, code }))
+            )
+        )
+    })
+}
 
 // salvar dados do convidado
 export function saveGuestData(code, idx, data) {

@@ -5,6 +5,7 @@ import Rsvp from './Rsvp';
 import Landing from './Landing';
 import GiftList from './GiftList';
 import GuestManual from './GuestManual';
+import GuestsDashboard from './GuestsDashboard';
 import { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -36,6 +37,7 @@ function App() {
                             <Route path="/manual" element={<GuestManual />} />
                             <Route path="/rsvp" element={<Rsvp />} />
                             <Route path="/lista" element={<GiftList />} />
+                            <Route path="/admin/guests" element={<GuestsDashboard />} />
                         </Routes>
                     </div>
                 )}
